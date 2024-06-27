@@ -8,10 +8,10 @@ apt update && apt upgrade -y --fix-missing && update-grub && sleep 2 && apt -y i
 Masukkan perintah dibawah jika anda menggunakan OS Ubuntu Version 18 atau 20
 ### (optional beberapa VPS mengalami masalah nginx ipv6)
 ```
-sudo sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT=".*\) ipv6.disable=1\(.*"\)$/\1 ipv6.disable=0\2/' /etc/default/grub
-sudo sed -i 's/^\(GRUB_CMDLINE_LINUX=".*\) ipv6.disable=1\(.*"\)$/\1 ipv6.disable=0\2/' /etc/default/grub
-sudo update-grub
-sudo reboot
+sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT=".*\)\<ipv6\.disable=1\>\(.*"\)/\1ipv6.disable=0\2/' /etc/default/grub
+sed -i 's/\(GRUB_CMDLINE_LINUX=".*\)\<ipv6\.disable=1\>\(.*"\)/\1ipv6.disable=0\2/' /etc/default/grub
+update-grub
+reboot
 ```
 ```
 apt update && apt upgrade -y && update-grub && sleep 2 && reboot
